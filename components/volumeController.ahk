@@ -23,7 +23,7 @@ increaseVolume() {
 	if(volumeController_showTooltip)
 		tooltip % round(currentVolume)
 	
-	settimer volumeControllerTooltipOff, %volumeController_tooltipVisibleTime%
+	settimer volumeControllerTooltipOff, -%volumeController_tooltipVisibleTime%
 }
 
 decreaseVolume() {
@@ -34,7 +34,7 @@ decreaseVolume() {
 	if(volumeController_showTooltip)
 		Tooltip % round(currentVolume)
 	
-	settimer volumeControllerTooltipOff, %volumeController_tooltipVisibleTime%
+	settimer volumeControllerTooltipOff, -%volumeController_tooltipVisibleTime%
 }
 
 muteVolume() {
@@ -49,7 +49,7 @@ muteVolume() {
 			ToolTip Sound On
 	}
 	
-	settimer volumeControllerTooltipOff, %volumeController_tooltipVisibleTime%
+	settimer volumeControllerTooltipOff, -%volumeController_tooltipVisibleTime%
 }
 
 toggleVolumeTooltip() {

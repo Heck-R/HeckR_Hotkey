@@ -45,3 +45,5 @@ iniFunctionConnecter(sectionName, iniFunctionName, paramsToBind := "", threadNum
 ;---------------------------------------------------------------------------------------------
 
 #include %A_ScriptDir%\components
+
+#include autoClicker.ahk

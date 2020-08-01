@@ -28,6 +28,7 @@ increaseVolume() {
 
 decreaseVolume() {
 	global volumeController_showTooltip ;Set in toggleVolumeTooltip
+	global volumeController_tooltipVisibleTime ;Set at the beginning of the script
 
 	SoundSet -5
 	SoundGet currentVolume
@@ -39,6 +40,7 @@ decreaseVolume() {
 
 muteVolume() {
 	global volumeController_showTooltip ;Set in toggleVolumeTooltip
+	global volumeController_tooltipVisibleTime ;Set at the beginning of the script
 
 	SoundSet, +1, , MUTE
 	SoundGet, currentVolume, , MUTE

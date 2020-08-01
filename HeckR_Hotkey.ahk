@@ -48,3 +48,4 @@ iniFunctionConnecter(sectionName, iniFunctionName, paramsToBind := "", threadNum
 
 #include autoClicker.ahk
 #include cursorMover.ahk
+#include simpleActionRemapper.ahk

@@ -50,3 +50,4 @@ iniFunctionConnecter(sectionName, iniFunctionName, paramsToBind := "", threadNum
 #include cursorMover.ahk
 #include simpleActionRemapper.ahk
 #include volumeController.ahk
+#include helperTooltipController.ahk

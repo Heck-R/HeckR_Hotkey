@@ -52,3 +52,4 @@ iniFunctionConnecter(sectionName, iniFunctionName, paramsToBind := "", threadNum
 #include volumeController.ahk
 #include helperTooltipController.ahk
 #include uncategorized.ahk
+#include scriptFlowController.ahk

@@ -21,9 +21,7 @@ increaseVolume() {
 	SoundSet +5
 	soundGet currentVolume
 	if(volumeController_showTooltip)
-		tooltip % round(currentVolume)
-	
-	settimer volumeControllerTooltipOff, -%volumeController_tooltipVisibleTime%
+		tmpToolTip(round(currentVolume), volumeController_tooltipVisibleTime)
 }
 
 decreaseVolume() {
@@ -33,9 +31,7 @@ decreaseVolume() {
 	SoundSet -5
 	SoundGet currentVolume
 	if(volumeController_showTooltip)
-		Tooltip % round(currentVolume)
-	
-	settimer volumeControllerTooltipOff, -%volumeController_tooltipVisibleTime%
+		tmpToolTip(round(currentVolume), volumeController_tooltipVisibleTime)
 }
 
 muteVolume() {
@@ -46,20 +42,14 @@ muteVolume() {
 	SoundGet, currentVolume, , MUTE
 	if(volumeController_showTooltip){
 		if(currentVolume == "On")
-			ToolTip Sound Off
+			tmpToolTip("Sound Off", volumeController_tooltipVisibleTime)
 		else
-			ToolTip Sound On
+			tmpToolTip("Sound Off", volumeController_tooltipVisibleTime)
 	}
-	
-	settimer volumeControllerTooltipOff, -%volumeController_tooltipVisibleTime%
 }
 
 toggleVolumeTooltip() {
 	global volumeController_showTooltip ;Global value to set here
 
 	volumeController_showTooltip := !volumeController_showTooltip
-}
-
-volumeControllerTooltipOff() {
-	ToolTip
 }

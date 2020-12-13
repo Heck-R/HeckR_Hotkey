@@ -70,12 +70,6 @@ holdKeyDown() {
 
 	setKeyPressCapturing()
 
-	ToolTip % keyToHold . " is being held down", 0, 0
-	SetTimer TurnOffKeyPressCapturingTooltip, -2000
-	return
-
-	TurnOffKeyPressCapturingTooltip:
-	ToolTip
-	return
+	tmpToolTip(keyToHold . " is being held down", 2000, 0, 0)
 }
 

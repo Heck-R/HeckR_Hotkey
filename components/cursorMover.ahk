@@ -37,8 +37,6 @@ cursorMover_cursorSpeedOptions := cursorMover_cursorSpeedOptions == "" ? [50, 10
 
 prepareContinousMouseControll()
 iniFunctionConnecter(scriptSectionName, "setContinousMouseControll")
-iniFunctionConnecter(scriptSectionName, ["changeCursorSpeedUp", "changeCursorSpeed"], [1])
-iniFunctionConnecter(scriptSectionName, ["changeCursorSpeedDown", "changeCursorSpeed"], [-1])
 
 ; 1 pixel movement
 for direction, axises in cursorMover_directions {
@@ -77,14 +75,19 @@ prepareContinousMouseControll() {
 		; Set cursor mover hotkey
 		iniFunctionConnecter(scriptSectionName, [iniKey, "moveCursorContinously"])
 	}
+	
+	iniFunctionConnecter(scriptSectionName, ["changeCursorSpeedUp", "changeCursorSpeed"], [1])
+	iniFunctionConnecter(scriptSectionName, ["changeCursorSpeedDown", "changeCursorSpeed"], [-1])
 
 	iniFunctionConnecter(scriptSectionName, ["leftClick", "mouseActionDown", "mouseActionUp"], ["LButton"])
 	iniFunctionConnecter(scriptSectionName, ["rightClick", "mouseActionDown", "mouseActionUp"], ["RButton"])
 	iniFunctionConnecter(scriptSectionName, ["middleClick", "mouseActionDown", "mouseActionUp"], ["MButton"])
 	iniFunctionConnecter(scriptSectionName, ["macro1", "mouseActionDown", "mouseActionUp"], ["XButton1"])
 	iniFunctionConnecter(scriptSectionName, ["macro2", "mouseActionDown", "mouseActionUp"], ["XButton2"])
+
 	iniFunctionConnecter(scriptSectionName, ["scrollUp", "mouseScroll"], ["WheelUp"])
 	iniFunctionConnecter(scriptSectionName, ["scrollDown", "mouseScroll"], ["WheelDown"])
+	
 	iniFunctionConnecter(scriptSectionName, "doubleClick")
 	iniFunctionConnecter(scriptSectionName, "tripleClick")
 

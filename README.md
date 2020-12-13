@@ -46,8 +46,8 @@ Continous movement ([Keyboard Limitation]())
 - **middleClick**: Alternative for MiddleMouseButton
 - **macro1**: Alternative for MouseForward
 - **macro2**: Alternative for MouseBackward
-- **scrollUp**: Alternative for scrolling up (2 of the smallest roll possible per press)
-- **scrollDown**: Alternative for scrolling down (2 of the smallest roll possible per press)
+- **scrollUp**: Alternative for scrolling up (continous scrolling if held down)
+- **scrollDown**: Alternative for scrolling down (continous scrolling if held down)
 - **doubleClick**: Simple double click
 - **tripleClick**: Simple triple click
 

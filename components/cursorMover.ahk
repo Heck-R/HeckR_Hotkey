@@ -151,23 +151,23 @@ getCursorSpeed() {
 	return cursorMover_cursorSpeedOptions[cursorMover_cursorSpeedIndex + 1]
 }
 
-mouseActionDown(content, triggerKey) {
-	SendInput, {%content% down}
+mouseActionDown(keyToSend, triggerKey) {
+	SendInput, {%keyToSend% down}
 	while (GetKeyState(triggerKey, "P")) {
 		Sleep, 50
 	}
 }
 
-mouseActionUp(content, triggerKey) {
-	SendInput, {%content% up}
+mouseActionUp(keyToSend, triggerKey) {
+	SendInput, {%keyToSend% up}
 	while (GetKeyState(triggerKey, "P")) {
 		Sleep, 50
 	}
 }
 
-mouseScroll(content, triggerKey) {
+mouseScroll(keyToSend, triggerKey) {
 	while GetKeyState(triggerKey, "P"){
-		SendInput, {%content%}
+		SendInput, {%keyToSend%}
 		Sleep, 100
 	}
 }

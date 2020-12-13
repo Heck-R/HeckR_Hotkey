@@ -30,10 +30,41 @@ This group can produce cursor movement
 
 #### cursorMover
 
-- **moveCursorLeft**: Move cursor 1 pixel left
-- **moveCursorRight**: Move cursor 1 pixel right
-- **moveCursorUp**: Move cursor 1 pixel up
-- **moveCursorDown**: Move cursor 1 pixel down
+Precision movement
+- **moveCursor(Left/Right/Up/Down)**: Move cursor 1 pixel in any direction
+
+Continous movement ([Keyboard Limitation]())
+- **setContinousMouseControll**: Enable/disable all hotkeys under "Continous movement"
+- **changeCursorSpeed(Up/Down)**: Change between cursor speed options  \
+  For the speed options, see: `cursorMover_options` section > `cursorSpeedOptions`
+- **moveCursorContinously(Left/Right/Up/Down)**: Move cursor in any direction with the defined speed  \
+  For setting the speed, see:
+    - `cursorMover` section > `changeCursorSpeed(Up/Down)`)
+    - `cursorMover_options` section > `cursorSpeedOptions`
+- **leftClick**: Alternative for MainMouseButton
+- **rightClick**: Alternative for SecondaryMouseButton
+- **middleClick**: Alternative for MiddleMouseButton
+- **macro1**: Alternative for MouseForward
+- **macro2**: Alternative for MouseBackward
+- **scrollUp**: Alternative for scrolling up (2 of the smallest roll possible per press)
+- **scrollDown**: Alternative for scrolling down (2 of the smallest roll possible per press)
+- **doubleClick**: Simple double click
+- **tripleClick**: Simple triple click
+
+### Additional Settings
+
+Configuration section `cursorMover_options`
+
+- **cursorSpeedOptions**:  \
+  *Description*: Cursor speed options that can be used for moving the cursor  \
+  *Unit*: pixel / second (px/sec)  \
+  *Format*: Comma separated list of integers  \
+  *Default*: `50, 100, 250, 500, 1000, 2500, 5000, 10000`  \
+  *Related Hotkeys*: For changing between speeds, see: `cursorMover` section > `changeCursorSpeed(Up/Down)`
+- **initalSpeedOptionIndex**:  \
+  *Description*: Index of the cursor speed option to start with  \
+  *Default*: If `cursorSpeedOptions` is defined: `0`. Otherwise `2`  \
+  *Related Hotkeys*: For setting the speed options, see: `cursorMover_options` section > `cursorSpeedOptions`)
 
 ## File Executer
 
@@ -158,6 +189,40 @@ This group is a collection of other functionalities that could not be grouped
 ## Path
 
 _Path_ is one of Windows' environment variables, that helps access files / executables easier
+
+## Keyboard Limitation
+
+On most keyboards, not any combination of keys can be detected due to their design (see [stackExchange question](https://gaming.stackexchange.com/questions/6669/how-do-i-remove-the-limit-on-pc-keyboard-button-presses)).  \
+This means that if you find that some remapped buttons are not working when used at the same time, it is most likely due to this limitation.
+
+What you can do:
+- Map your hotkeys in a different way
+- Buy a better keyboard
+- Accept not being able to use the script to it's full capability
+
+## Key Namings
+
+### MainMouseButton
+
+**Left** button on right handed mouses  
+**Right** button on left handed mouses
+
+### SecondaryMouseButton
+
+**Right** button on right handed mouses  
+**Left** button on left handed mouses
+
+### MiddleMouseButton
+
+Clicking on the mouse wheel
+
+### MouseForward
+
+On better / gaming mouses there are usually 2 extra buttons at the thumb. This is usually the one closer to the user
+
+### MouseBackward
+
+On better / gaming mouses there are usually 2 extra buttons at the thumb. This is usually the one further from the user
 
 # Responsibility
 

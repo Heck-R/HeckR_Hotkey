@@ -83,8 +83,8 @@ prepareContinousMouseControll() {
 	iniFunctionConnecter(scriptSectionName, ["middleClick", "mouseActionDown", "mouseActionUp"], ["MButton"])
 	iniFunctionConnecter(scriptSectionName, ["macro1", "mouseActionDown", "mouseActionUp"], ["XButton1"])
 	iniFunctionConnecter(scriptSectionName, ["macro2", "mouseActionDown", "mouseActionUp"], ["XButton2"])
-	iniFunctionConnecter(scriptSectionName, ["scrollUp", "mouseActionDown", "mouseActionUp"], ["WheelUp"])
-	iniFunctionConnecter(scriptSectionName, ["scrollDown", "mouseActionDown", "mouseActionUp"], ["WheelDown"])
+	iniFunctionConnecter(scriptSectionName, ["scrollUp", "mouseScroll"], ["WheelUp"])
+	iniFunctionConnecter(scriptSectionName, ["scrollDown", "mouseScroll"], ["WheelDown"])
 	iniFunctionConnecter(scriptSectionName, "doubleClick")
 	iniFunctionConnecter(scriptSectionName, "tripleClick")
 
@@ -162,6 +162,13 @@ mouseActionUp(content, triggerKey) {
 	SendInput, {%content% up}
 	while (GetKeyState(triggerKey, "P")) {
 		Sleep, 50
+	}
+}
+
+mouseScroll(content, triggerKey) {
+	while GetKeyState(triggerKey, "P"){
+		SendInput, {%content%}
+		Sleep, 100
 	}
 }
 

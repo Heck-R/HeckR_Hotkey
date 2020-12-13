@@ -33,7 +33,7 @@ This group can produce cursor movement
 Precision movement
 - **moveCursor(Left/Right/Up/Down)**: Move cursor 1 pixel in any direction
 
-Continous movement ([Keyboard Limitation]())
+Continous movement (Only single keys should be set as hotkeys in this section [except for  `setContinousMouseControll`]. Also, see [Keyboard Limitation](#keyboard-limitation))
 - **setContinousMouseControll**: Enable/disable all hotkeys under "Continous movement"
 - **changeCursorSpeed(Up/Down)**: Change between cursor speed options  \
   For the speed options, see: `cursorMover_options` section > `cursorSpeedOptions`

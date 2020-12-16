@@ -79,11 +79,11 @@ prepareContinousMouseControll() {
 	iniFunctionConnecter(scriptSectionName, ["changeCursorSpeedUp", "changeCursorSpeed"], [1])
 	iniFunctionConnecter(scriptSectionName, ["changeCursorSpeedDown", "changeCursorSpeed"], [-1])
 
-	iniFunctionConnecter(scriptSectionName, ["leftClick", "mouseActionDown", "mouseActionUp"], ["LButton"])
-	iniFunctionConnecter(scriptSectionName, ["rightClick", "mouseActionDown", "mouseActionUp"], ["RButton"])
-	iniFunctionConnecter(scriptSectionName, ["middleClick", "mouseActionDown", "mouseActionUp"], ["MButton"])
-	iniFunctionConnecter(scriptSectionName, ["macro1", "mouseActionDown", "mouseActionUp"], ["XButton1"])
-	iniFunctionConnecter(scriptSectionName, ["macro2", "mouseActionDown", "mouseActionUp"], ["XButton2"])
+	iniFunctionConnecter(scriptSectionName, ["leftClick", "mouseAction"], ["LButton"])
+	iniFunctionConnecter(scriptSectionName, ["rightClick", "mouseAction"], ["RButton"])
+	iniFunctionConnecter(scriptSectionName, ["middleClick", "mouseAction"], ["MButton"])
+	iniFunctionConnecter(scriptSectionName, ["macro1", "mouseAction"], ["XButton1"])
+	iniFunctionConnecter(scriptSectionName, ["macro2", "mouseAction"], ["XButton2"])
 
 	iniFunctionConnecter(scriptSectionName, ["scrollUp", "mouseScroll"], ["WheelUp"])
 	iniFunctionConnecter(scriptSectionName, ["scrollDown", "mouseScroll"], ["WheelDown"])
@@ -154,18 +154,12 @@ getCursorSpeed() {
 	return cursorMover_cursorSpeedOptions[cursorMover_cursorSpeedIndex + 1]
 }
 
-mouseActionDown(keyToSend, triggerKey) {
+mouseAction(keyToSend, triggerKey) {
 	SendInput, {%keyToSend% down}
 	while (GetKeyState(triggerKey, "P")) {
 		Sleep, 50
 	}
-}
-
-mouseActionUp(keyToSend, triggerKey) {
 	SendInput, {%keyToSend% up}
-	while (GetKeyState(triggerKey, "P")) {
-		Sleep, 50
-	}
 }
 
 mouseScroll(keyToSend, triggerKey) {

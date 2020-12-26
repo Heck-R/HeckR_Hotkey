@@ -11,16 +11,16 @@ See [AutoHotkey - Hotkeys](https://www.autohotkey.com/docs/Hotkeys.htm) to find 
 
 There is an example of a configuration file named `HeckR_Hotkey_example.ini`, which contains the possible settings, and short explanation comments (the lines starting with a `#`)
 
-## Auto Clicker
+## Auto Fire
 
 This group can produce mouse clicking
 
 ### Hotkeys
 
-#### autoClicker
+#### autoFire
 
-- **toggleAutoClicking**: Turn on/off rapid clicking
-- **heldAutoClicking**: Rapid clicking while thr assigned key is being held down (this hotkey must only consist of one key without modifiers)
+- **toggleAutoFire**: Turn on/off rapid clicking
+- **heldAutoFire**: Rapid clicking while thr assigned key is being held down (this hotkey must only consist of one key without modifiers)
 
 ## Cursor Mover
 

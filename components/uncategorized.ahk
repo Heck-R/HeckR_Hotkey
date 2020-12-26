@@ -1,15 +1,19 @@
 
+#include <HeckerFunc>
+
+;-------------------------------------------------------
+
 CoordMode, ToolTip, Screen
 
 ;-------------------------------------------------------
 
 scriptSectionname := "uncategorized"
 
-prepareKeyPressCapturing()
+mitmInput(Func("holdKeyDown"), true)
 
 iniFunctionConnecter(scriptSectionname, "soundBeep")
 iniFunctionConnecter(scriptSectionname, "setWindowOnTop")
-iniFunctionConnecter(scriptSectionname, "setKeyPressCapturing")
+iniFunctionConnecter(scriptSectionname, "holdKeyDown")
 
 ;-------------------------------------------------------
 ;-------------------------------------------------------
@@ -26,50 +30,11 @@ setWindowOnTop() {
 
 ;-------------------------------------------------------
 
-#If keyPressCapturingIsOn()
-#If
-
-prepareKeyPressCapturing() {
-	global keyPressCapturingOn ;Set in setKeyPressCapturing
-
-	firstHexList := ["", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
-	secondHexList := ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
-
-	Hotkey If, keyPressCapturingIsOn()
-
-	loop 16 {
-		firstChar := firstHexList[A_Index]
-		loop 16 {
-			secondChar := secondHexList[A_Index]
-			virtualNum=%firstChar%%secondChar%
-			
-			if(virtualNum != "0"){
-				Hotkey, ~vk%virtualNum%, holdKeyDown
-			}
-		}
-	}
-
-	Hotkey If
-}
-
-setKeyPressCapturing() {
-	global keyPressCapturingOn ;Global value to set here
-	keyPressCapturingOn := !keyPressCapturingOn
-}
-
-keyPressCapturingIsOn() {
-	global keyPressCapturingOn ;Set in setKeyPressCapturing
-	return keyPressCapturingOn
-}
-
 holdKeyDown() {
-	Sleep 250
+	keyToHold := readSingleKey(true, 0)
+	;Sleep 250
 	
-	keyToHold := SubStr(A_ThisHotkey, 2)
 	Send {%keyToHold% down}
-
-	setKeyPressCapturing()
 
 	tmpToolTip(keyToHold . " is being held down", 2000, 0, 0)
 }
-

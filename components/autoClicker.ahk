@@ -1,22 +1,22 @@
 
 scriptSectionname := "autoClicker"
 
-iniFunctionConnecter(scriptSectionname, "toggleAutoClicking", [], 2)
-iniFunctionConnecter(scriptSectionname, "heldAutoClicking")
+iniFunctionConnecter(scriptSectionname, "toggleAutoFire", [], 2)
+iniFunctionConnecter(scriptSectionname, "heldAutoFire")
 
 ;-------------------------------------------------------
 ;-------------------------------------------------------
 
-toggleAutoClicking() {
-	global autoClicker_clickingFlag ;Keeps local parameter's value across calls
+toggleAutoFire() {
+	global autoFire_clickingFlag ;Keeps local parameter's value across calls
 
-	autoClicker_clickingFlag := !autoClicker_clickingFlag
-	while autoClicker_clickingFlag {
+	autoFire_clickingFlag := !autoFire_clickingFlag
+	while autoFire_clickingFlag {
 		click
 	}
 }
 
-heldAutoClicking(key) {
+heldAutoFire(key) {
 	while GetKeyState(key, "P"){
 		click
 	}

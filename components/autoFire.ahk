@@ -1,23 +1,43 @@
 
+; Global variables
+autoFire_fireFlag := false
+autoFire_key := "vk1" ;Set in setAutoFireKey()
+
+;-------------------------------------------------------
+
 scriptSectionname := "autoFire"
 
 iniFunctionConnecter(scriptSectionname, "toggleAutoFire", [], 2)
 iniFunctionConnecter(scriptSectionname, "heldAutoFire")
+iniFunctionConnecter(scriptSectionname, "setAutoFireKey")
 
 ;-------------------------------------------------------
 ;-------------------------------------------------------
 
 toggleAutoFire() {
-	global autoFire_clickingFlag ;Keeps local parameter's value across calls
+	global autoFire_fireFlag
+	global autoFire_key
 
-	autoFire_clickingFlag := !autoFire_clickingFlag
-	while autoFire_clickingFlag {
-		click
+	autoFire_fireFlag := !autoFire_fireFlag
+	while autoFire_fireFlag {
+		Send {%autoFire_key%}
 	}
 }
 
 heldAutoFire(key) {
+	global autoFire_fireFlag
+	global autoFire_key
+
+	autoFire_fireFlag := false
+
 	while GetKeyState(key, "P"){
-		click
+		SendInput {%autoFire_key%}
 	}
+}
+
+setAutoFireKey() {
+	global autoFire_key
+
+	autoFire_key := readSingleKey(true, 0)
+	tmpToolTip("Rapid fire key is set to: " . autoFire_key, 2000, 0, 0)
 }

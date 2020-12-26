@@ -71,7 +71,7 @@ iniFunctionConnecter(sectionName, iniFunctionName, paramsToBind := "", threadNum
 
 #include %A_ScriptDir%\components
 
-#include autoClicker.ahk
+#include autoFire.ahk
 #include cursorMover.ahk
 #include simpleActionRemapper.ahk
 #include volumeController.ahk

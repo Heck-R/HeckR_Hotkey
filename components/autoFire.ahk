@@ -1,5 +1,5 @@
 
-scriptSectionname := "autoClicker"
+scriptSectionname := "autoFire"
 
 iniFunctionConnecter(scriptSectionname, "toggleAutoFire", [], 2)
 iniFunctionConnecter(scriptSectionname, "heldAutoFire")

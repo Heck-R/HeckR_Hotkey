@@ -13,14 +13,18 @@ There is an example of a configuration file named `HeckR_Hotkey_example.ini`, wh
 
 ## Auto Fire
 
-This group can produce mouse clicking
+This group can produce mouse rapid fireing of any key, including mouse buttons, joysticks etc.
 
 ### Hotkeys
 
 #### autoFire
 
 - **toggleAutoFire**: Turn on/off rapid clicking
-- **heldAutoFire**: Rapid clicking while thr assigned key is being held down (this hotkey must only consist of one key without modifiers)
+  - NOTICE: Turning toggled rapid fire off with this hotkey is not reliable when modifiers are included in the hotkey  \
+    If you wish to have modifiers in it, consider using the `heldAutoFire` to turn off toggled autofire
+- **heldAutoFire**: Rapid clicking while thr assigned key is being held down (this hotkey must only consist of one key without modifiers)  \
+  Also turns off toggled auto fire in case it's on
+- **setAutoFireKey**: After triggring, press any key / mouse button / etc. to set it as the rapidfire key for `toggleAutoFire` and `heldAutoFire`
 
 ## Cursor Mover
 
@@ -182,7 +186,7 @@ This group is a collection of other functionalities that could not be grouped
 
 - **soundBeep**: A 1 second beep sound to wake up speakers
 - **setWindowOnTop**: Enable/disable having the active window always on top of everything
-- **holdKeyDown**: After triggring, press any key / mouse button for having it held down. To release a held down key, just press and release it. Multiple things can be held down at the same time
+- **holdKeyDown**: After triggring, press any key / mouse button / etc. for having it held down. To release a held down key, just press and release it. Multiple things can be held down at the same time
 
 # Notes
 

@@ -182,7 +182,7 @@ This group is a collection of other functionalities that could not be grouped
 
 - **soundBeep**: A 1 second beep sound to wake up speakers
 - **setWindowOnTop**: Enable/disable having the active window always on top of everything
-- **setKeyPressCapturing**: After triggring, press any key / mouse button for having it held down. To release a held down key, just press and release it. Multiple things can be held down at the same time
+- **holdKeyDown**: After triggring, press any key / mouse button for having it held down. To release a held down key, just press and release it. Multiple things can be held down at the same time
 
 # Notes
 

@@ -176,6 +176,24 @@ This group can change the settings of the default sound device
 - **muteVolume**: Mute the default sound device's volume
 - **toggleVolumeTooltip**: Turn on/off tooltip feedback about volumeController actions
 
+### Additional Settings
+
+Configuration section `volumeController_options`
+
+- **volumeChange**:  \
+  *Description*: The amount of which the the volume changes (only applies if `changePercentage` is `0` or not defined)  \
+  *Unit*: Volume percent  \
+  *Format*: `Integer`  \
+  *Default*: `5`  \
+  *Related Hotkeys*: For changing between speeds, see: `volumeController` section > `(increase/decrease)Volume`
+
+- **volumeChangePercentage**:  \
+  *Description*: The percentage of which the the volume decreases (increase: 1/changePercentage). If 0 or not defined, the volume changes by a fixed amount (see `volumeChange`)  \
+  *Unit*: Volume change percentage  \
+  *Format*: `Integers`  \
+  *Default*: `0`  \
+  *Related Hotkeys*: For changing between speeds, see: `volumeController` section > `changeCursorSpeed(Up/Down)`
+
 ## Uncategorized
 
 This group is a collection of other functionalities that could not be grouped

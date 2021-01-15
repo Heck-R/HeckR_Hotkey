@@ -94,7 +94,6 @@ Some examples:
 
 A custom number of hotkeys can be created, by defining them in the format explained at [File Definition Format](#File-Definition-Format), and assigning a hotkey to them
 
-
 ### Additional Settings
 
 Configuration section `fileRunner_startupCommands`

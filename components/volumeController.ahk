@@ -38,14 +38,11 @@ muteVolume() {
 	global volumeController_showTooltip ;Set in toggleVolumeTooltip
 	global volumeController_tooltipVisibleTime ;Set at the beginning of the script
 
+	SoundGet, soundOn, , MUTE
 	SoundSet, +1, , MUTE
-	SoundGet, currentVolume, , MUTE
-	if(volumeController_showTooltip){
-		if(currentVolume == "On")
-			tmpToolTip("Sound Off", volumeController_tooltipVisibleTime)
-		else
-			tmpToolTip("Sound Off", volumeController_tooltipVisibleTime)
-	}
+
+	if(volumeController_showTooltip)
+		tmpToolTip("Sound " . soundOn, volumeController_tooltipVisibleTime)
 }
 
 toggleVolumeTooltip() {

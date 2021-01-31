@@ -20,7 +20,7 @@ toggleAutoFire() {
 
 	autoFire_fireFlag := !autoFire_fireFlag
 	while autoFire_fireFlag {
-		Send {%autoFire_key%}
+		SendInput {Blind}{%autoFire_key%}
 	}
 }
 

@@ -39,8 +39,8 @@ prepareContinousMouseControll()
 iniFunctionConnecter(scriptSectionName, "setContinousMouseControll")
 
 ; 1 pixel movement
-for direction, axises in cursorMover_directions {
-	iniFunctionConnecter(scriptSectionName, ["moveCursor" . direction, "moveCursor"], axises)
+for direction, directionData in cursorMover_directions {
+	iniFunctionConnecter(scriptSectionName, ["moveCursor" . direction, "moveCursor"], [directionData.axises.x, directionData.axises.y])
 }
 
 ;-------------------------------------------------------

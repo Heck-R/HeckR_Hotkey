@@ -11,7 +11,7 @@ scriptSectionname := "helperTooltipController"
 
 helperTooltipController_initContent()
 
-iniFunctionConnecter(scriptSectionname, "toggleHelperTooltip")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "toggleHelperTooltip")
 
 ;-------------------------------------------------------
 ;-------------------------------------------------------

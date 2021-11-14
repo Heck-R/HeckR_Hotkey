@@ -11,9 +11,9 @@ scriptSectionname := "uncategorized"
 
 mitmInput(Func("holdKeyDown"), true)
 
-iniFunctionConnecter(scriptSectionname, "soundBeep")
-iniFunctionConnecter(scriptSectionname, "setWindowOnTop")
-iniFunctionConnecter(scriptSectionname, "holdKeyDown")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "soundBeep")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "setWindowOnTop")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "holdKeyDown")
 
 ;-------------------------------------------------------
 ;-------------------------------------------------------

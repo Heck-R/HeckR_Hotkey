@@ -1,4 +1,8 @@
 
+#include <HeckerFunc>
+
+;-------------------------------------------------------
+
 scriptSectionname := "fileRunner"
 
 fileRunner_hotkeyedCommandsInit(scriptSectionname)

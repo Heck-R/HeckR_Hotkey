@@ -36,11 +36,11 @@ cursorMover_cursorSpeedOptions := cursorMover_cursorSpeedOptions == "" ? [50, 10
 ;-------------------------------------------------------
 
 prepareContinousMouseControll()
-iniFunctionConnecter(scriptSectionName, "setContinousMouseControll")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "setContinousMouseControll")
 
 ; 1 pixel movement
 for direction, directionData in cursorMover_directions {
-	iniFunctionConnecter(scriptSectionName, ["moveCursor" . direction, "moveCursor"], [directionData.axises.x, directionData.axises.y])
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["moveCursor" . direction, "moveCursor"], [directionData.axises.x, directionData.axises.y])
 }
 
 ;-------------------------------------------------------
@@ -73,23 +73,23 @@ prepareContinousMouseControll() {
 			directionData["hotkey"] := directionHotkey
 
 		; Set cursor mover hotkey
-		iniFunctionConnecter(scriptSectionName, [iniKey, "moveCursorContinously"])
+		mapConfigHotkeyToFunction(iniFile, scriptSectionName, [iniKey, "moveCursorContinously"])
 	}
 	
-	iniFunctionConnecter(scriptSectionName, ["changeCursorSpeedUp", "changeCursorSpeed"], [1])
-	iniFunctionConnecter(scriptSectionName, ["changeCursorSpeedDown", "changeCursorSpeed"], [-1])
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["changeCursorSpeedUp", "changeCursorSpeed"], [1])
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["changeCursorSpeedDown", "changeCursorSpeed"], [-1])
 
-	iniFunctionConnecter(scriptSectionName, ["leftClick", "mouseAction"], ["LButton"])
-	iniFunctionConnecter(scriptSectionName, ["rightClick", "mouseAction"], ["RButton"])
-	iniFunctionConnecter(scriptSectionName, ["middleClick", "mouseAction"], ["MButton"])
-	iniFunctionConnecter(scriptSectionName, ["macro1", "mouseAction"], ["XButton1"])
-	iniFunctionConnecter(scriptSectionName, ["macro2", "mouseAction"], ["XButton2"])
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["leftClick", "mouseAction"], ["LButton"])
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["rightClick", "mouseAction"], ["RButton"])
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["middleClick", "mouseAction"], ["MButton"])
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["macro1", "mouseAction"], ["XButton1"])
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["macro2", "mouseAction"], ["XButton2"])
 
-	iniFunctionConnecter(scriptSectionName, ["scrollUp", "mouseScroll"], ["WheelUp"])
-	iniFunctionConnecter(scriptSectionName, ["scrollDown", "mouseScroll"], ["WheelDown"])
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["scrollUp", "mouseScroll"], ["WheelUp"])
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["scrollDown", "mouseScroll"], ["WheelDown"])
 	
-	iniFunctionConnecter(scriptSectionName, "doubleClick")
-	iniFunctionConnecter(scriptSectionName, "tripleClick")
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, "doubleClick")
+	mapConfigHotkeyToFunction(iniFile, scriptSectionName, "tripleClick")
 
 	Hotkey If
 }

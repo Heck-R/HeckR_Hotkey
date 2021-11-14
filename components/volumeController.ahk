@@ -1,4 +1,8 @@
 
+#include <HeckerFunc>
+
+;-------------------------------------------------------
+
 volumeController_showTooltip := true
 volumeController_tooltipVisibleTime := 1000
 
@@ -9,10 +13,10 @@ volumeController_volumeChange := 0
 
 scriptSectionname := "volumeController"
 
-iniFunctionConnecter(scriptSectionname, "increaseVolume")
-iniFunctionConnecter(scriptSectionname, "decreaseVolume")
-iniFunctionConnecter(scriptSectionname, "muteVolume")
-iniFunctionConnecter(scriptSectionname, "toggleVolumeTooltip")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "increaseVolume")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "decreaseVolume")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "muteVolume")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "toggleVolumeTooltip")
 
 IniRead, volumeController_changePercentage, %iniFile%, %scriptSectionname%_options, volumeChangePercentage, %A_Space%
 if( (volumeController_changePercentage != 0) && (volumeController_changePercentage != "") )

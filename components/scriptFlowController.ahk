@@ -14,19 +14,19 @@ scriptFlowController_sectionName := scriptSectionname
 scriptFlowController_mainScriptsInit(scriptSectionname)
 
 
-iniFunctionConnecter(scriptSectionname, "runAnyScriptWindow")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "runAnyScriptWindow")
 
-iniFunctionConnecter(scriptSectionname, "reloadAllScripts")
-iniFunctionConnecter(scriptSectionname, "reloadMainScripts")
-iniFunctionConnecter(scriptSectionname, "reloadTemporaryScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "reloadAllScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "reloadMainScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "reloadTemporaryScripts")
 
-iniFunctionConnecter(scriptSectionname, "suspendAllScripts")
-iniFunctionConnecter(scriptSectionname, "suspendMainScripts")
-iniFunctionConnecter(scriptSectionname, "suspendTemporaryScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "suspendAllScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "suspendMainScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "suspendTemporaryScripts")
 
-iniFunctionConnecter(scriptSectionname, "exitAllScripts")
-iniFunctionConnecter(scriptSectionname, "exitMainScripts")
-iniFunctionConnecter(scriptSectionname, "exitTemporaryScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "exitAllScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "exitMainScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "exitTemporaryScripts")
 
 ;-------------------------------------------------------
 ;-------------------------------------------------------

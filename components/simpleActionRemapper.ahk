@@ -1,9 +1,13 @@
 
+#include <HeckerFunc>
+
+;-------------------------------------------------------
+
 scriptSectionname := "simpleActionRemapper"
 
-iniFunctionConnecter(scriptSectionname, "copyContent")
-iniFunctionConnecter(scriptSectionname, "pasteContent")
-iniFunctionConnecter(scriptSectionname, "deleteContent")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "copyContent")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "pasteContent")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "deleteContent")
 
 ;-------------------------------------------------------
 ;-------------------------------------------------------

@@ -1,4 +1,8 @@
 
+#include <HeckerFunc>
+
+;-------------------------------------------------------
+
 ; Global variables
 autoFire_fireFlag := false
 autoFire_key := "vk1" ;Set in setAutoFireKey()
@@ -7,9 +11,9 @@ autoFire_key := "vk1" ;Set in setAutoFireKey()
 
 scriptSectionname := "autoFire"
 
-iniFunctionConnecter(scriptSectionname, "toggleAutoFire", [], 2)
-iniFunctionConnecter(scriptSectionname, "heldAutoFire")
-iniFunctionConnecter(scriptSectionname, "setAutoFireKey")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "toggleAutoFire", [], 2)
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "heldAutoFire")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "setAutoFireKey")
 
 ;-------------------------------------------------------
 ;-------------------------------------------------------

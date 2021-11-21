@@ -9,8 +9,6 @@ CoordMode, ToolTip, Screen
 
 scriptSectionname := "uncategorized"
 
-mitmInput(Func("holdKeyDown"), true)
-
 mapConfigHotkeyToFunction(iniFile, scriptSectionName, "soundBeep")
 mapConfigHotkeyToFunction(iniFile, scriptSectionName, "setWindowOnTop")
 mapConfigHotkeyToFunction(iniFile, scriptSectionName, "holdKeyDown")

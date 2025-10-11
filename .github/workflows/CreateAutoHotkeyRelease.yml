@@ -14,7 +14,7 @@ jobs:
     compile-script:
         name: 'Compile Script'
 
-        runs-on: windows-2019
+        runs-on: windows-2022
 
         env:
             AUH_download_link: 'https://www.autohotkey.com/download/1.1/AutoHotkey_1.1.33.02.zip'

@@ -77,13 +77,12 @@ jobs:
                   Write-Host "Created ${{ env.changelog_name }}"
 
             - name: Upload Release Sources as an Artifact
-              uses: actions/upload-artifact@v2.2.1
+              uses: actions/upload-artifact@v4
               with:
                   name: 'ReleaseSources'
                   path: |
                       ${{ env.AUH_script_name }}.exe
                       ${{ env.changelog_name }}
-                  retention-days: 365
 
     create-release:
         name: 'Create Release'
@@ -93,7 +92,7 @@ jobs:
 
         steps:
             - name: Download Release Sources Artifact
-              uses: actions/download-artifact@v2.0.7
+              uses: actions/download-artifact@v4
               with:
                   name: 'ReleaseSources'
 

@@ -85,6 +85,6 @@ jobs:
               with:
                   name: 'ReleaseSources'
 
-            - run: gh release create v3.0.0 --draft --verify-tag --title "Release ${{ github.ref }}" --notes-file "${{ env.changelog_name }}" *.exe
+            - run: gh release create v3.0.0 --repo "${{ github.repository }}" --draft --verify-tag --title "Release ${{ github.ref }}" --notes-file "${{ env.changelog_name }}" *.exe
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

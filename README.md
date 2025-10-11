@@ -65,7 +65,7 @@ Configuration section `cursorMover_options`
   *Format*: Comma separated list of integers  \
   *Default*: `50, 100, 250, 500, 1000, 2500, 5000, 10000`  \
   *Related Hotkeys*: For changing between speeds, see: `cursorMover` section > `changeCursorSpeed(Up/Down)`
-- **initalSpeedOptionIndex**:  \
+- **initialSpeedOptionIndex**:  \
   *Description*: Index of the cursor speed option to start with  \
   *Default*: If `cursorSpeedOptions` is defined: `0`. Otherwise `2`  \
   *Related Hotkeys*: For setting the speed options, see: `cursorMover_options` section > `cursorSpeedOptions`)

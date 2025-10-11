@@ -24,7 +24,7 @@ scriptSectionName := "cursorMover"
 scriptOptionSectionName := scriptSectionName . "_options"
 
 IniRead, cursorMover_cursorSpeedOptions, %iniFile% , %scriptOptionSectionName%, cursorSpeedOptions, %A_Space%
-IniRead, cursorMover_cursorSpeedIndex, %iniFile% , %scriptOptionSectionName%, initalSpeedOptionIndex, %A_Space%
+IniRead, cursorMover_cursorSpeedIndex, %iniFile% , %scriptOptionSectionName%, initialSpeedOptionIndex, %A_Space%
 
 ; cursorMover_cursorSpeedIndex - Describes which speed option is set at the moment from cursorMover_cursorSpeedOptions
 ; By default 0, if the options are default as well, then 2.

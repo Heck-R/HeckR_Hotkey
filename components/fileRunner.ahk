@@ -1,24 +1,23 @@
-
 #include <HeckerFunc>
 
 ;-------------------------------------------------------
 
-scriptSectionname := "fileRunner"
+scriptSectionName := "fileRunner"
 
-fileRunner_hotkeyedCommandsInit(scriptSectionname)
+fileRunner_hotkeyCommandsInit(scriptSectionName)
 
-fileRunner_executeStartupCommands(scriptSectionname . "_startupCommands")
+fileRunner_executeStartupCommands(scriptSectionName . "_startupCommands")
 
 ;-------------------------------------------------------
 ;-------------------------------------------------------
 
-; Read list of hotkeyed commands, and create the appropriate hotkey
-fileRunner_hotkeyedCommandsInit(scriptSectionname) {
+; Read list of hotkey commands, and create the appropriate hotkey
+fileRunner_hotkeyCommandsInit(scriptSectionName) {
 	global iniFile ;Expected to be pre-set
 
-	IniRead, fileRunner_hotkeyedCommandsRaw, %iniFile%, %scriptSectionname%
-	
-	Loop, Parse, fileRunner_hotkeyedCommandsRaw, `n, %A_Space%`r`t
+	IniRead, fileRunner_hotkeyCommandsRaw, %iniFile%, %scriptSectionName%
+
+	Loop, Parse, fileRunner_hotkeyCommandsRaw, `n, %A_Space%`r`t
 	{
 		commandParts := StrSplit(A_LoopField, "=", " `t")
 
@@ -28,11 +27,11 @@ fileRunner_hotkeyedCommandsInit(scriptSectionname) {
 }
 
 ; Read list of startup commands, and execute them
-fileRunner_executeStartupCommands(scriptSectionname) {
+fileRunner_executeStartupCommands(scriptSectionName) {
 	global iniFile ;Expected to be pre-set
 
-	IniRead, fileRunner_startupCommandsRaw, %iniFile%, %scriptSectionname%
-	
+	IniRead, fileRunner_startupCommandsRaw, %iniFile%, %scriptSectionName%
+
 	Loop, Parse, fileRunner_startupCommandsRaw, `n, %A_Space%`r`t
 	{
 		runWrapper(A_LoopField)

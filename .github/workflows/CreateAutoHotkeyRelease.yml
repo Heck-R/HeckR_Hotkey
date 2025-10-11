@@ -29,9 +29,10 @@ jobs:
               with:
                 version: 'v1.1.33.02'
                 x64: true
+                x64_suffix: ''
                 x86: false
                 in: "${{ env.AUH_script_name }}.ahk"
-                out: "${{ env.AUH_script_name }}.exe"
+                out: '.'
 
             - name: Create Changelog From Commit Messages
               run: |

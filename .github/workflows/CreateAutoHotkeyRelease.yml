@@ -28,22 +28,16 @@ jobs:
                   fetch-depth: 0
                   submodules: 'recursive'
 
-            - name: Provision AutoHotkey Compiler
-              run: |
-                  Write-Host "Downloading AutoHotkey from '${{ env.AUH_download_link }}'..."
-                  Invoke-WebRequest -Uri "${{ env.AUH_download_link }}" -OutFile "${{ env.AUH_download_name }}"
-
-                  Write-Host "Extracting AutoHotkey archive..."
-                  Expand-Archive -Path "${{ env.AUH_download_name }}" -DestinationPath "${{ env.AUH_download_target_folder }}"
-
-            - name: Compile AutoHotkey Script
-              run: |
-                  # Variables
-                  $ahkExePath = "${{ env.AUH_download_target_folder }}\${{ env.AUH_exe }}"
-
-                  # Logic
-                  Write-Host "Compiling..."
-                  ."${{ env.AUH_download_target_folder }}\Compiler\Ahk2Exe.exe" /in "${{ env.AUH_script_name }}.ahk" /out "${{ env.AUH_script_name }}.exe" /ahk "$ahkExePath" /compress 0
+            - name: AutoHotkey Build
+              # You may pin to the exact commit or the version.
+              # uses: nukdokplex/autohotkey-build@d03aa71b25ca417c6c4a61e064222e9acb66f5ad
+              uses: nukdokplex/autohotkey-build@v1
+              with:
+                version: 'v2.0.19'
+                x64: true
+                x86: false
+                in: "${{ env.AUH_script_name }}.ahk"
+                out: "${{ env.AUH_script_name }}.exe"
 
             - name: Create Changelog From Commit Messages
               run: |
@@ -87,7 +81,7 @@ jobs:
     create-release:
         name: 'Create Release'
 
-        runs-on: windows-2019
+        runs-on: windows-2022
         needs: [compile-script]
 
         steps:

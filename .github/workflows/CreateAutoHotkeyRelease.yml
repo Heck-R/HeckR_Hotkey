@@ -16,12 +16,6 @@ jobs:
 
         runs-on: windows-2022
 
-        env:
-            AUH_download_link: 'https://www.autohotkey.com/download/1.1/AutoHotkey_1.1.33.02.zip'
-            AUH_download_name: 'AutoHotkeyDownload.zip'
-            AUH_download_target_folder: 'AutoHotkeySource'
-            AUH_exe: 'AutoHotkeyU32.exe'
-
         steps:
             - uses: actions/checkout@v2
               with:
@@ -33,7 +27,7 @@ jobs:
               # uses: nukdokplex/autohotkey-build@d03aa71b25ca417c6c4a61e064222e9acb66f5ad
               uses: nukdokplex/autohotkey-build@v1
               with:
-                version: 'v2.0.19'
+                version: 'v1.1.33.02'
                 x64: true
                 x86: false
                 in: "${{ env.AUH_script_name }}.ahk"

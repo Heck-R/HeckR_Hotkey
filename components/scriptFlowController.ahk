@@ -1,4 +1,3 @@
-
 #include <HeckerFunc>
 
 ;-------------------------------------------------------
@@ -11,77 +10,60 @@ SetTitleMatchMode RegEx
 scriptSectionname := "scriptFlowController"
 scriptFlowController_sectionName := scriptSectionname
 
-scriptFlowController_mainScriptsInit(scriptSectionname)
-
-
 mapConfigHotkeyToFunction(iniFile, scriptSectionName, "runAnyScriptWindow")
 
-mapConfigHotkeyToFunction(iniFile, scriptSectionName, "reloadAllScripts")
-mapConfigHotkeyToFunction(iniFile, scriptSectionName, "reloadMainScripts")
-mapConfigHotkeyToFunction(iniFile, scriptSectionName, "reloadTemporaryScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "reloadThisScript")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "reloadOtherAhkScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "reloadAllAhkScripts")
 
-mapConfigHotkeyToFunction(iniFile, scriptSectionName, "suspendAllScripts")
-mapConfigHotkeyToFunction(iniFile, scriptSectionName, "suspendMainScripts")
-mapConfigHotkeyToFunction(iniFile, scriptSectionName, "suspendTemporaryScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "suspendThisScript")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "suspendOtherAhkScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "suspendAllAhkScripts")
 
-mapConfigHotkeyToFunction(iniFile, scriptSectionName, "exitAllScripts")
-mapConfigHotkeyToFunction(iniFile, scriptSectionName, "exitMainScripts")
-mapConfigHotkeyToFunction(iniFile, scriptSectionName, "exitTemporaryScripts")
-
-;-------------------------------------------------------
-;-------------------------------------------------------
-
-; Read list of main scripts
-scriptFlowController_mainScriptsInit(scriptSectionname) {
-	global iniFile ;Expected to be pre-set
-	global scriptFlowController_mainScripts ;Global value to set here
-
-	IniRead, scriptFlowController_mainScriptsRaw, %iniFile%, scriptFlowController_mainScripts
-	scriptFlowController_mainScripts := StrSplit(scriptFlowController_mainScriptsRaw, "`n", " `r`t")
-}
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "exitThisScript")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "exitOtherAhkScripts")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "exitAllAhkScripts")
 
 ;---------------------------------------------------------------------------------------------
 ;---------------------------------------------------------------------------------------------
 ;---------------------------------------------------------------------------------------------
 
-reloadAllScripts() {
+reloadThisScript() {
 	Suspend permit
 
-	WinGet, AHKWindows, List, .ahk - AutoHotkey
+	Reload
+}
+
+reloadOtherAhkScripts() {
+	Suspend permit
+
+	WinGet, AHKWindows, List, .ahk - AutoHotkey,, %A_ScriptName%
 	Loop %AHKWindows% {
 		currID := AHKWindows%A_Index%
 		PostMessage, 0x111, 65303,,, ahk_id %currID% ;Reload
 	}
 }
 
-reloadMainScripts() {
+reloadAllAhkScripts() {
 	Suspend permit
-	global scriptFlowController_mainScripts ;Set in scriptFlowController_mainScriptsInit
 
-	for, i, scName in scriptFlowController_mainScripts {
-		PostMessage, 0x111, 65303,,, %scName% - AutoHotkey ;Reload
-	}
-}
-
-
-reloadTemporaryScripts() {
-	Suspend permit
-	global scriptFlowController_mainScripts ;Set in scriptFlowController_mainScriptsInit
-
-	ex := Join("|", scriptFlowController_mainScripts*)
-	WinGet, AHKWindows, List, .ahk - AutoHotkey,, %ex%
-	Loop %AHKWindows% {
-		currID := AHKWindows%A_Index%
-		PostMessage, 0x111, 65303,,, ahk_id %currID% ;Reload
-	}
+	reloadOtherAhkScripts()
+	reloadThisScript()
 }
 
 ;-------------------------------------------------------
 
-suspendAllScripts() {
+suspendThisScript() {
 	Suspend permit
 
-	WinGet, AHKWindows, List, .ahk - AutoHotkey
+	Suspend, Toggle
+	Pause, Toggle
+}
+
+suspendOtherAhkScripts() {
+	Suspend permit
+
+	WinGet, AHKWindows, List, .ahk - AutoHotkey,, %A_ScriptName%
 	Loop %AHKWindows% {
 		currID := AHKWindows%A_Index%
 		PostMessage, 0x111, 65305,,, ahk_id %currID% ;Suspend
@@ -89,33 +71,20 @@ suspendAllScripts() {
 	}
 }
 
-suspendMainScripts() {
+suspendAllAhkScripts() {
 	Suspend permit
-	global scriptFlowController_mainScripts ;Set in scriptFlowController_mainScriptsInit
 
-	for, i, scName in scriptFlowController_mainScripts {
-		PostMessage, 0x111, 65305,,, %scName% - AutoHotkey ;Suspend
-		PostMessage, 0x111, 65306,,, %scName% - AutoHotkey ;Pause
-	}
-}
-
-
-suspendTemporaryScripts() {
-	Suspend permit
-	global scriptFlowController_mainScripts ;Set in scriptFlowController_mainScriptsInit
-
-	ex := Join("|", scriptFlowController_mainScripts*)
-	WinGet, AHKWindows, List, .ahk - AutoHotkey,, %ex%
-	Loop %AHKWindows% {
-		currID := AHKWindows%A_Index%
-		PostMessage, 0x111, 65305,,, ahk_id %currID% ;Suspend
-		PostMessage, 0x111, 65306,,, ahk_id %currID% ;Pause
-	}
+	suspendOtherAhkScripts()
+	suspendThisScript()
 }
 
 ;-------------------------------------------------------
 
-exitAllScripts() {
+exitThisScript() {
+	ExitApp
+}
+
+exitOtherAhkScripts() {
 	Suspend permit
 
 	WinGet, AHKWindows, List, .ahk - AutoHotkey,, %A_ScriptName%
@@ -123,28 +92,13 @@ exitAllScripts() {
 		currID := AHKWindows%A_Index%
 		WinClose ahk_id %currID% ;Exit
 	}
-	ExitApp
 }
 
-exitMainScripts() {
+exitAllAhkScripts() {
 	Suspend permit
-	global scriptFlowController_mainScripts ;Set in scriptFlowController_mainScriptsInit
 
-	for, i, scName in scriptFlowController_mainScripts {
-		WinClose %scName% - AutoHotkey ;Exit
-	}
-}
-
-exitTemporaryScripts() {
-	Suspend permit
-	global scriptFlowController_mainScripts ;Set in scriptFlowController_mainScriptsInit
-
-	ex := Join("|", scriptFlowController_mainScripts*)
-	WinGet, AHKWindows, List, .ahk - AutoHotkey,, %ex%
-	Loop %AHKWindows% {
-		currID := AHKWindows%A_Index%
-		WinClose ahk_id %currID% ;Exit
-	}
+	exitOtherAhkScripts()
+	exitThisScript()
 }
 
 ;---------------------------------------------------------------------------------------------
@@ -157,7 +111,7 @@ runAnyScriptWindow() {
 	global scriptFlowController_runnableScriptsRoot ;Global value to set here
 	global scriptFlowController_categoryFolders ;Global value to set here
 	global scriptFlowController_categoryFoldersContents ;Global value to set here
-	
+
 	scriptFlowController_runnableScriptsRoot=%A_ScriptDir%\
 
 	IniRead, customscriptFlowController_runnableScriptsRoot, %iniFile%, %scriptFlowController_sectionName%_options, runnableScriptsRoot, %A_Space%
@@ -173,7 +127,7 @@ runAnyScriptWindow() {
 		currFolder:=A_LoopFileName
 		filePaths:=[]
 		fileNames:=""
-		
+
 		Loop Files, %scriptFlowController_runnableScriptsRoot%\%currFolder%\*, DF
 		{
 			if(A_LoopFileExt == "ahk"){
@@ -188,7 +142,7 @@ runAnyScriptWindow() {
 				}
 			}
 		}
-		
+
 		if(0<strlen(fileNames)) {
 			scriptFlowController_categoryFoldersContents[currFolder]:=Object()
 			scriptFlowController_categoryFoldersContents[currFolder]["fileNames"]:=fileNames
@@ -208,7 +162,7 @@ createRunAnyScriptWindow() {
 	global scriptFlowController_categoryFolders ;Set in runAnyScriptWindow
 	global scriptFlowController_categoryFolderChoice ;Global value to set by GUI created here
 	global scriptFlowController_categoryFileChoice ;Global value to set by GUI created here
-	
+
 	Gui Destroy
 
 	Gui Add, DropDownList, gSetFileList vscriptFlowController_categoryFolderChoice x24 y12 w128,%scriptFlowController_categoryFolders%

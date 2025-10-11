@@ -1,4 +1,3 @@
-
 #include <HeckerFunc>
 
 ;-------------------------------------------------------
@@ -36,7 +35,7 @@ cursorMover_cursorSpeedOptions := cursorMover_cursorSpeedOptions == "" ? [50, 10
 ;-------------------------------------------------------
 
 prepareContinousMouseControll()
-mapConfigHotkeyToFunction(iniFile, scriptSectionName, "setContinousMouseControll")
+mapConfigHotkeyToFunction(iniFile, scriptSectionName, "setContinuousMouseControl")
 
 ; 1 pixel movement
 for direction, directionData in cursorMover_directions {
@@ -58,7 +57,7 @@ moveCursor(x, y) {
 prepareContinousMouseControll() {
 	global iniFile
 	global scriptSectionName
-	global cursorMover_continousMouseControllOn ;Set in setContinousMouseControll
+	global cursorMover_continousMouseControllOn ;Set in setContinuousMouseControl
 	global cursorMover_cursorMoving ;Set in moveCursorContinously based on cursor is being moved or not
 	global cursorMover_directions ;Set at top of the script
 
@@ -75,7 +74,7 @@ prepareContinousMouseControll() {
 		; Set cursor mover hotkey
 		mapConfigHotkeyToFunction(iniFile, scriptSectionName, [iniKey, "moveCursorContinously"])
 	}
-	
+
 	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["changeCursorSpeedUp", "changeCursorSpeed"], [1])
 	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["changeCursorSpeedDown", "changeCursorSpeed"], [-1])
 
@@ -87,14 +86,14 @@ prepareContinousMouseControll() {
 
 	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["scrollUp", "mouseScroll"], ["WheelUp"])
 	mapConfigHotkeyToFunction(iniFile, scriptSectionName, ["scrollDown", "mouseScroll"], ["WheelDown"])
-	
+
 	mapConfigHotkeyToFunction(iniFile, scriptSectionName, "doubleClick")
 	mapConfigHotkeyToFunction(iniFile, scriptSectionName, "tripleClick")
 
 	Hotkey If
 }
 
-setContinousMouseControll() {
+setContinuousMouseControl() {
 	global cursorMover_continousMouseControllOn ;Global value to set here
 	global cursorMover_toolTipTimeout ;Set at top of the script
 	cursorMover_continousMouseControllOn := !cursorMover_continousMouseControllOn

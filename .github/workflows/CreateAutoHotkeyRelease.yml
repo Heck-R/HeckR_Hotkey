@@ -23,16 +23,14 @@ jobs:
                   submodules: 'recursive'
 
             - name: AutoHotkey Build
-              # You may pin to the exact commit or the version.
-              # uses: nukdokplex/autohotkey-build@d03aa71b25ca417c6c4a61e064222e9acb66f5ad
               uses: nukdokplex/autohotkey-build@v1
               with:
-                version: 'v1.1.33.02'
-                x64: true
-                x64_suffix: ''
-                x86: false
-                in: "${{ env.AUH_script_name }}.ahk"
-                out: '.'
+                  version: 'v1.1.33.02'
+                  x64: true
+                  x64_suffix: ''
+                  x86: false
+                  in: '${{ env.AUH_script_name }}.ahk'
+                  out: '.'
 
             - name: Create Changelog From Commit Messages
               run: |

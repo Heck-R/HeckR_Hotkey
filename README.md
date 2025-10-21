@@ -1,3 +1,16 @@
+# Archived
+
+I made these for myself, and now it became annoying to handle it as one big randomness.  \
+=> The functionalities are now ported to multiple separate repos (some are just left behind)
+- `autoFire.ahk` -> [AutoFire](https://github.com/Heck-R/AutoFire)
+- `cursorMover.ahk` -> [KeyboardMouse](https://github.com/Heck-R/KeyboardMouse)
+- `fileRunner.ahk` -> An arbitrary ahk script can do this instead of passing it through an INI file, and AutoHotkey is just as portable as this script compiled with an INI file
+- `helperTooltipController.ahk` -> Unnecessary without a gigantic config
+- `scriptFlowController.ahk` -> [AhkScriptManager](https://github.com/Heck-R/AhkScriptManager)
+- `simpleActionRemapper.ahk` -> [MiniAhkUtils](https://github.com/Heck-R/MiniAhkUtils)
+- `uncategorized.ahk` -> [MiniAhkUtils](https://github.com/Heck-R/MiniAhkUtils) & [AutoFire](https://github.com/Heck-R/AutoFire) & Keeping windows on top is nicer with [PowerToys](https://github.com/microsoft/PowerToys) compared to my mini util
+- `volumeController.ahk` -> [VolumeController](https://github.com/Heck-R/VolumeController)
+
 # HeckR_Hotkey
 
 HeckR_Hotkey is a collection of a bunch of small features that I found generally useful, but not big, or major enough, to have their own script.
